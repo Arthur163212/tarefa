@@ -1,49 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --azul-profundo: #0a0f2c;
+  --azul-medio:    #1a3a8f;
+  --azul-vivo:     #1e5ef3;
+  --azul-claro:    #4d9fff;
+  --azul-gelo:     #a8d4ff;
+  --branco:        #f0f6ff;
+  --sombra:        0 8px 32px rgba(30, 94, 243, 0.35);
+  --radius:        18px;
+}
+
 body {
-  background-color: #f4f4f4;
-  font-family: 'Georgia', serif;
-  padding: 40px;
-  margin: 0;
+  font-family: 'Syne', sans-serif;
+  background-color: var(--azul-profundo);
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(30,94,243,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(77,159,255,0.12) 0%, transparent 55%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: var(--branco);
 }
 
-/* Título com ID */
-#titulo-principal {
+h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
   text-align: center;
-  font-family: 'Trebuchet MS', sans-serif;
-  color: #1a1a2e;
-  font-size: 2.5rem;
-  border-bottom: 3px solid #1a1a2e;
-  padding-bottom: 10px;
+  margin-bottom: 56px;
+  letter-spacing: -0.02em;
 }
 
-/* Parágrafo 1 - Destaque */
-.paragrafo-destaque {
-  background-color: #fff8e1;
-  color: #5a4000;
-  border-left: 5px solid #f5c518;
-  padding: 15px 20px;
-  border-radius: 4px;
-  margin: 20px 0;
-  font-size: 1.1rem;
+h1 span { color: var(--azul-vivo); }
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
 }
 
-/* Parágrafo 2 - Informativo */
-.paragrafo-info {
-  background-color: #e3f2fd;
-  color: #0d3b66;
-  border-left: 5px solid #1565c0;
-  padding: 15px 20px;
-  border-radius: 4px;
-  margin: 20px 0;
-  font-size: 1.1rem;
+/* ---- CAIXA BASE ---- */
+.caixa {
+  background-color: var(--azul-medio); /* cor de fundo */
+  padding: 40px 48px;                  /* padding */
+  margin: 16px;                        /* margin */
+  border: 2px solid var(--azul-vivo);  /* border */
+
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  min-width: 260px;
+  max-width: 340px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s ease;
 }
 
-/* Parágrafo 3 - Aviso */
-.paragrafo-aviso {
-  background-color: #fdecea;
-  color: #7b1a1a;
-  border-left: 5px solid #c62828;
-  padding: 15px 20px;
-  border-radius: 4px;
-  margin: 20px 0;
-  font-size: 1.1rem;
+.caixa:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(30, 94, 243, 0.55);
 }
+
+/* ---- CAIXA 1 ---- */
+.caixa-1 {
+  background-color: #1a3a8f;
+  border: 2px solid var(--azul-vivo);
+}
+
+/* ---- CAIXA 2 ---- */
+.caixa-2 {
+  background-color: #0d2666;
+  border: 2px dashed var(--azul-claro);
+  padding: 48px 52px;
+  margin: 24px;
+}
+
+.caixa-icone { font-size: 2.4rem; margin-bottom: 16px; display: block; }
+
+.caixa-titulo {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--azul-claro);
+  margin-bottom: 10px;
+}
+
+.caixa-nome {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--branco);
+  margin-bottom: 20px;
+}
+
+.divisor {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, var(--azul-vivo), var(--azul-claro));
+  border-radius: 999px;
+  margin: 0 auto 20px;
+}
+
+.caixa-specs { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 8px; }
+
+.caixa-specs li {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--azul-gelo);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(77,159,255,0.15);
+  padding-bottom: 6px;
+}
+
+.caixa-specs li span { color: var(--branco); font-weight: 700; }
+
+footer {
+  margin-top: 64px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: rgba(168,212,255,0.3);
+  text-transform: uppercase;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.caixa-1 { animation: fadeUp .7s ease both; }
+.caixa-2 { animation: fadeUp .7s ease .2s both; }
